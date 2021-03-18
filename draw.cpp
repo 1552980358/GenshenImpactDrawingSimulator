@@ -66,13 +66,13 @@ void fill_draw_list(char *draw_list, default_random_engine engine) {
 
     // 0.600%
     for (int i = 0; i < 6; ++i) {
-        while (*(element = &(draw_list[distribution(engine)])) != 0);
+        while (*(element = &(draw_list[distribution(engine)])));
         *element = TYPE_5;
     }
 
     // 5.100%
     for (int i = 0; i < 51; ++i) {
-        while (*(element = &(draw_list[distribution(engine)])) != 0);
+        while (*(element = &(draw_list[distribution(engine)])));
         *element = TYPE_4;
     }
 
@@ -89,7 +89,7 @@ void fill_safety_match(char *safety_match_list, default_random_engine engine) {
     // element address
     char *element;
     for (int i = 0; i < 60; ++i) {
-        while (*(element = &(safety_match_list[distribution(engine)])) != 0);
+        while (*(element = &(safety_match_list[distribution(engine)])));
         *element = TYPE_5;
     }
 
@@ -120,7 +120,7 @@ char draw_4_star(char *draw_4_start_list, default_random_engine engine) {
     uniform_int_distribution distribution(0, SIZE_4_STAR_UP * SIZE_4_STAR_NON_UP * 2 + 1);
     char *element;
     for (int i = 0; i < SIZE_4_STAR_UP * SIZE_4_STAR_NON_UP; ++i) {
-        while (*(element = &(draw_4_start_list[distribution(engine)])) != 0);
+        while (*(element = &(draw_4_start_list[distribution(engine)])));
         *element = TYPE_4_UP;
     }
     for (int i = 0; i < SIZE_4_STAR_UP * SIZE_4_STAR_NON_UP; ++i) {
@@ -139,7 +139,7 @@ char draw_safety_match(char *safety_match, default_random_engine engine) {
     uniform_int_distribution distribution(0, LIST_SIZE);
     char *element;
     for (int i = 0; i < 6; ++i) {
-        while (*(element = &(safety_match[i])) != 0);
+        while (*(element = &(safety_match[i])));
         *element = TYPE_5;
     }
     for (int i = 0; i < SIZE_5_STAR_NON_UP * 2; ++i) {
