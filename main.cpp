@@ -6,6 +6,7 @@ using std::default_random_engine;
 #include <string>
 using std::string;
 using std::getline;
+#include <time.h>
 #include "record.h"
 #include "draw.h"
 
@@ -36,8 +37,8 @@ int main() {
             input = 10;
         }
         if (!(input % 10)) {
-            default_random_engine engine(time_t(nullptr));
             for (int i = 0; i < input / 10; ++i) {
+                default_random_engine engine(time(nullptr));
                 for (int j = 0; j < 10; ++j) {
                     head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star, engine);
                 }
@@ -45,7 +46,7 @@ int main() {
             continue;
         }
         for (int i = 0; i < input; ++i) {
-            head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star, default_random_engine(time_t(nullptr)));
+            head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star, default_random_engine(time(nullptr)));
         }
     }
 
