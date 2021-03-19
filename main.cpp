@@ -2,12 +2,9 @@
 using std::cout;
 using std::cin;
 using std::endl;
-#include <random>
-using std::default_random_engine;
 #include <string>
 using std::string;
 using std::getline;
-#include <ctime>
 #include "record.h"
 #include "draw.h"
 
@@ -48,15 +45,14 @@ int main() {
         }
         if (!(input % 10)) {
             for (int i = 0; i < input / 10; ++i) {
-                default_random_engine engine(time(nullptr));
                 for (int j = 0; j < 10; ++j) {
-                    head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star, engine);
+                    head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star);
                 }
             }
             continue;
         }
         for (int i = 0; i < input; ++i) {
-            head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star, default_random_engine(time(nullptr)));
+            head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star);
         }
     }
 
