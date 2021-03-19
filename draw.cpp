@@ -170,16 +170,15 @@ record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_
     clear_list(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list);
     record *ptr = head ? get_last(head) : nullptr;
 
-    cout << "New draw: ";
-
+    cout << "[";
     if (!check_has_safety_match_180(ptr)) {
-        cout << " SAFETY_BIG ";
+        cout << " SAFETY_BIG";
         ptr = new record(TYPE_5_UP, ptr);
     } else if (!check_has_safety_match_90(ptr)) {
-        cout << " SAFETY_SMALL ";
+        cout << " SAFETY_SMALL";
         ptr = new record(draw_safety_match_90(draw_5_star_list), ptr);
     } else if (!check_has_safety_match_10(ptr)) {
-        cout << " SAFETY_NORMAL ";
+        cout << " SAFETY_NORMAL";
         ptr = new record(draw_safety_match_10(safety_match_list, draw_5_star_list, draw_4_start_list), ptr);
     } else {
         ptr = new record(draw_normal(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list), ptr);
@@ -190,7 +189,7 @@ record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_
             cout << " 5* UP ";
             break;
         case TYPE_5_NON_UP:
-            cout << " 5*";
+            cout << " 5* ";
             break;
         case TYPE_4_UP:
             cout << " 4* UP ";
@@ -202,7 +201,8 @@ record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_
             cout << " 3* ";
             break;
     }
-    cout << endl;
+
+    cout << ']';
 
     return get_head(ptr);
 }

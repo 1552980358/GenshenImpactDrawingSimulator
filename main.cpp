@@ -46,16 +46,23 @@ int main() {
             input = 10;
         }
         if (!(input % 10)) {
+            cout << "10 Draw: ";
             for (int i = 0; i < input / 10; ++i) {
                 for (int j = 0; j < 10; ++j) {
                     head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star);
                 }
             }
+            cout << endl;
             continue;
         }
+        cout << "Draw: ";
         for (int i = 0; i < input; ++i) {
             head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star);
+            if (!((i + 1) % 10)) {
+                cout << endl;
+            }
         }
+        cout << endl;
     }
 
     cout << "Press any key to exit..."; getchar();
