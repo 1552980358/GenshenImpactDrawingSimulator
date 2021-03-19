@@ -174,6 +174,10 @@ char draw_normal(char *draw_list, char *safety_match_list, char *draw_5_star_lis
     }
 }
 
+#include <iostream>
+using std::cout;
+using std::endl;
+
 record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_5_star_list, char *draw_4_start_list,
              default_random_engine engine) {
     clear_list(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list);
@@ -188,6 +192,25 @@ record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_
     } else {
         ptr = new record(draw_normal(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list, engine), ptr);
     }
+    cout << "New draw: ";
+    switch (ptr->get_type()) {
+        case TYPE_5_UP:
+            cout << " 5* UP ";
+            break;
+        case TYPE_5_NON_UP:
+            cout << " 5*";
+            break;
+        case TYPE_4_UP:
+            cout << " 4* UP ";
+            break;
+        case TYPE_4_NON_UP:
+            cout << " 4* ";
+            break;
+        case TYPE_3:
+            cout << " 3* ";
+            break;
+    }
+    cout << endl;
 
     return get_head(ptr);
 }
