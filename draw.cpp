@@ -1,6 +1,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+#include <windows.h>
 #include <ctime>
 #include "draw.h"
 
@@ -172,37 +173,47 @@ record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_
 
     cout << "[";
     if (!check_has_safety_match_180(ptr)) {
-        cout << " SAFETY_BIG";
+        cout << "SAFETY_BIG ";
         ptr = new record(TYPE_5_UP, ptr);
     } else if (!check_has_safety_match_90(ptr)) {
-        cout << " SAFETY_SMALL";
+        cout << "SAFETY_SMALL ";
         ptr = new record(draw_safety_match_90(draw_5_star_list), ptr);
     } else if (!check_has_safety_match_10(ptr)) {
-        cout << " SAFETY_NORMAL";
+        cout << "SAFETY_NORMAL ";
         ptr = new record(draw_safety_match_10(safety_match_list, draw_5_star_list, draw_4_start_list), ptr);
     } else {
         ptr = new record(draw_normal(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list), ptr);
     }
 
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO console_screen_buffer_info;
+
     switch (ptr->get_type()) {
         case TYPE_5_UP:
-            cout << " 5* UP ";
+            SetConsoleTextAttribute(handle, 6);
+            cout << "5* UP";
             break;
         case TYPE_5_NON_UP:
-            cout << " 5* ";
+            SetConsoleTextAttribute(handle, 6);
+            cout << "5*";
             break;
         case TYPE_4_UP:
-            cout << " 4* UP ";
+            SetConsoleTextAttribute(handle,  5);
+            cout << "4* UP";
             break;
         case TYPE_4_NON_UP:
-            cout << " 4* ";
+            SetConsoleTextAttribute(handle,  5);
+            cout << "4*";
             break;
         case TYPE_3:
-            cout << " 3* ";
+            SetConsoleTextAttribute(handle, 1);
+            cout << "3*";
             break;
     }
 
-    cout << ']';
+    SetConsoleTextAttribute(handle, 7);
+
+    cout << "] ";
 
     return get_head(ptr);
 }

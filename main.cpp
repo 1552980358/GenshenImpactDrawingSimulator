@@ -51,11 +51,12 @@ int main() {
             continue;
         }
         if (!(input % 10)) {
-            cout << "10 Draw: ";
             for (int i = 0; i < input / 10; ++i) {
+                cout << "10 Draw: ";
                 for (int j = 0; j < 10; ++j) {
                     head = draw(head, draw_list, safety_match, draw_5_star, draw_4_star);
                 }
+                cout << endl;
             }
             cout << endl;
             continue;
