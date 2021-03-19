@@ -14,11 +14,13 @@ using std::getline;
 #define FLAG_HELP -999
 
 /** prototype **/
+void draw_buddha();
 bool is_numbers(const string &);
 int str_to_int(const string&);
 int get_input();
 
 int main() {
+    draw_buddha();
     int input;
     record *head = nullptr;
     char *draw_list = (char *) malloc(LIST_SIZE * sizeof(char));
@@ -59,6 +61,31 @@ int main() {
     cout << "Press any key to exit..."; getchar();
 
     return 0;
+}
+
+void draw_buddha() {
+    cout << "////////////////////////////////////////////////////////////////////" << endl;
+    cout << "//                          _ooOoo_                               //" << endl;
+    cout << "//                         o8888888o                              //" << endl;
+    cout << "//                         88\" . \"88                              //" << endl;
+    cout << "//                         (| ^_^ |)                              //" << endl;
+    cout << "//                         O\\  =  /O                              //" << endl;
+    cout << "//                      ____/`---'\\____                           //" << endl;
+    cout << "//                    .'  \\\\|     |//  `.                         //" << endl;
+    cout << R"(//                   /  \\|||  :  |||//  \                        //)" << endl;
+    cout << "//                  /  _||||| -:- |||||-  \\                       //" << endl;
+    cout << R"(//                  |   | \\\  -  /// |   |                       //)" << endl;
+    cout << "//                  | \\_|  ''\\---/''  |   |                       //" << endl;
+    cout << "//                  \\  .-\\__  `-`  ___/-. /                       //" << endl;
+    cout << "//                ___`. .'  /--.--\\  `. . ___                     //" << endl;
+    cout << "//              ."" '<  `.___\\_<|>_/___.'  >'"".                      //" << endl;
+    cout << "//            | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |                 //" << endl;
+    cout << R"(//            \  \ `-.   \_ __\ /__ _/   .-` /  /                 //)" << endl;
+    cout << "//      ========`-.____`-.___\\_____/___.-`____.-'========         //" << endl;
+    cout << "//                           `=---='                              //" << endl;
+    cout << "//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        //" << endl;
+    cout << "//               佛祖保佑      永无BUG      永不修改                  //" << endl;
+    cout << "////////////////////////////////////////////////////////////////////" << endl;
 }
 
 bool is_numbers(const string &str) {
