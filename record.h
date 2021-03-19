@@ -35,6 +35,6 @@ record *get_head(record *);
 
 record *get_last(record *);
 
-void clear_all(record *);
+record * clear_all(record *);
 
 #endif //GENSHENIMPACTDRAWINGSIMULATOR_RECORD_H

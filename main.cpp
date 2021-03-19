@@ -30,7 +30,9 @@ int main() {
 
     while ((input = get_input()) != FLAG_EXIT) {
         if (input == FLAG_CLEAR_ALL) {
-            clear_all(head);
+            head = clear_all(head);
+            cout << "All records removed." << endl
+                 << endl;
             continue;
         }
         if (input == FLAG_HELP) {
@@ -62,7 +64,8 @@ int main() {
                 cout << endl;
             }
         }
-        cout << endl;
+        cout << endl
+             << endl;
     }
 
     cout << "Press any key to exit..."; getchar();

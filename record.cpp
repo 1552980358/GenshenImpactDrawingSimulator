@@ -42,7 +42,7 @@ record *get_last(record *head) {
     return ptr;
 }
 
-void clear_all(record *head) {
+record *clear_all(record *head) {
     record *ptr_current = head;
     record *ptr_tmp;
     while (ptr_current != nullptr) {
@@ -50,4 +50,5 @@ void clear_all(record *head) {
         delete ptr_current;
         ptr_current = ptr_tmp;
     }
+    return nullptr;
 }
