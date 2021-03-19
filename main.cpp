@@ -1,6 +1,7 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::endl;
 #include <random>
 using std::default_random_engine;
 #include <string>
@@ -13,6 +14,7 @@ using std::getline;
 #define FLAG_EXIT -1
 #define FLAG_CLEAR_ALL -2
 #define FLAG_DRAW_10 -3
+#define FLAG_HELP -999
 
 /** prototype **/
 bool is_numbers(const string &);
@@ -30,6 +32,15 @@ int main() {
     while ((input = get_input()) != FLAG_EXIT) {
         if (input == FLAG_CLEAR_ALL) {
             clear_all(head);
+            continue;
+        }
+        if (input == FLAG_HELP) {
+            cout << "\"-1\" to quit" << endl
+                 << "\"-2\" to clear all drawing records" << endl
+                 << "\"-3\" to draw 10 times" << endl
+                 << "\"-999\" to show help message" << endl
+                 << "Any positive number that will automatically identified as draw single or 10 times each" << endl
+                 << endl;
             continue;
         }
         if (input == FLAG_DRAW_10) {
@@ -72,6 +83,7 @@ int str_to_int(const string& str) {
 }
 
 int get_input() {
+    cout << "Input number of drawing or command <-999 to get help>: ";
     string line;
     getline(cin, line);
     if (line == "-1") {
@@ -82,6 +94,9 @@ int get_input() {
     }
     if (line == "-3") {
         return FLAG_DRAW_10;
+    }
+    if (line == "-999") {
+        return FLAG_HELP;
     }
     if (!is_numbers(line)) {
         return 0;
