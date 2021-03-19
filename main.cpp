@@ -6,7 +6,7 @@ using std::default_random_engine;
 #include <string>
 using std::string;
 using std::getline;
-#include <time.h>
+#include <ctime>
 #include "record.h"
 #include "draw.h"
 
@@ -27,7 +27,6 @@ int main() {
     char *draw_5_star = (char *) malloc(SIZE_5_STAR_NON_UP * 2 * sizeof(char));
     char *draw_4_star = (char *) malloc(SIZE_4_STAR_UP * SIZE_4_STAR_NON_UP * 2 * sizeof(char));
 
-    cout << LIST_SIZE + LIST_SIZE + SIZE_5_STAR_NON_UP * 2 + SIZE_4_STAR_UP * SIZE_4_STAR_NON_UP * 2;
     while ((input = get_input()) != FLAG_EXIT) {
         if (input == FLAG_CLEAR_ALL) {
             clear_all(head);
