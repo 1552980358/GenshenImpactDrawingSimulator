@@ -170,14 +170,19 @@ record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_
     clear_list(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list);
     record *ptr = head ? get_last(head) : nullptr;
 
-    if (!check_has_safety_match_180(head)) {
+    cout << "New draw: ";
+
+    if (!check_has_safety_match_180(ptr)) {
+        cout << " SAFETY_BIG ";
         ptr = new record(TYPE_5_UP, ptr);
-    } else if (!check_has_safety_match_90(head)) {
-        ptr = new record(draw_safety_match_90(draw_5_star_list, engine), ptr);
-    } else if (!check_has_safety_match_10(head)) {
-        ptr = new record(draw_safety_match_10(safety_match_list, draw_5_star_list, draw_4_start_list, engine), ptr);
+    } else if (!check_has_safety_match_90(ptr)) {
+        cout << " SAFETY_SMALL ";
+        ptr = new record(draw_safety_match_90(draw_5_star_list), ptr);
+    } else if (!check_has_safety_match_10(ptr)) {
+        cout << " SAFETY_NORMAL ";
+        ptr = new record(draw_safety_match_10(safety_match_list, draw_5_star_list, draw_4_start_list), ptr);
     } else {
-        ptr = new record(draw_normal(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list, engine), ptr);
+        ptr = new record(draw_normal(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list), ptr);
     }
 
     switch (ptr->get_type()) {
