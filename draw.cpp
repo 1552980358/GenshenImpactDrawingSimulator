@@ -8,20 +8,20 @@ using std::default_random_engine;
 using std::uniform_int_distribution;
 
 bool check_has_safety_match_180(record *last) {
-    int count = 178;
+    int count = 179;
     record *ptr = last;
     while (count && ptr) {
-        if (ptr->get_type() != TYPE_5_UP) {
+        if (ptr->get_type() == TYPE_5_UP) {
             return true;
         }
         ptr = ptr->get_prev();
         count--;
     }
-    return false;
+    return count;
 }
 
 bool check_has_safety_match_90(record *last) {
-    int count = 88;
+    int count = 89;
     record *ptr = last;
     while (count && ptr) {
         if (!(ptr->get_type() % TYPE_5)) {
@@ -30,11 +30,11 @@ bool check_has_safety_match_90(record *last) {
         ptr = ptr->get_prev();
         count--;
     }
-    return false;
+    return count;
 }
 
 bool check_has_safety_match_10(record *last) {
-    int count = 8;
+    int count = 9;
     record *ptr = last;
     int type;
     while (count && ptr) {
@@ -45,7 +45,8 @@ bool check_has_safety_match_10(record *last) {
         ptr = ptr->get_prev();
         count--;
     }
-    return false;
+
+    return count;
 }
 
 void clear_list(char *draw_list, char *safety_match_list, char *draw_5_star_list, char *draw_4_start_list) {
