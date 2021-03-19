@@ -47,6 +47,9 @@ int main() {
         if (input == FLAG_DRAW_10) {
             input = 10;
         }
+        if (!input) {
+            continue;
+        }
         if (!(input % 10)) {
             cout << "10 Draw: ";
             for (int i = 0; i < input / 10; ++i) {
