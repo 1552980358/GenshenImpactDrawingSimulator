@@ -177,7 +177,7 @@ char draw_normal(char *draw_list, char *safety_match_list, char *draw_5_star_lis
 record *draw(record *head, char *draw_list, char *safety_match_list, char *draw_5_star_list, char *draw_4_start_list,
              default_random_engine engine) {
     clear_list(draw_list, safety_match_list, draw_5_star_list, draw_4_start_list);
-    record *ptr = get_last(head);
+    record *ptr = head ? get_last(head) : nullptr;
 
     if (!check_has_safety_match_180(head)) {
         ptr = new record(TYPE_5_UP, ptr);
